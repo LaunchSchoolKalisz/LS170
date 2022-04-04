@@ -20,5 +20,6 @@ e. Identify the path
 
 f. Identify the port
 default: 80
-Incorrect. LS solution This URL does not contain a port. Most software will use port 443 by default when working with this URL due to it having a scheme of https, but that information is not contained within the URL.
+Incorrect. 80 is the default port for http://
+LS solution: This URL does not contain a port. Most software will use port 443 by default when working with this URL due to it having a scheme of https, but that information is not contained within the URL.
 =end
