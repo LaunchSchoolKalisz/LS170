@@ -1,10 +1,15 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
 function server () {
   while true
   do
-    read message
-    echo "You said: $message"
+    read method path version
+    if [[ $method = 'GET' ]]
+    then
+      echo 'HTTP/1.1 200 OK'
+    else 
+      echo 'HTTP/1.1 400 Bad Request'
+   fi
   done
 }
 
