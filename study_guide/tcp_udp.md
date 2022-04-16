@@ -78,7 +78,7 @@ OTHER THINGS TO CONSIDER:
 ### What is pipelining?
 
 - Sending multiple messages at once, without waiting for an acknowledgement.
-- This is necessary because if each data transmission must _stop and wait_ for an acknowledgement too much time is spent waiting for the recipient's acknowledgment, which contributes greatly to latency.
+- This is necessary because if each data transmission must _stop and wait_ for an acknowledgement too much time is spent waiting for the recipient's acknowledgment, which is a large contributer to latency.
 - Pipelining transmissions can mitigate the latency added by additional waiting time, specifically with regards to the acknowledgement required in TCP and the three way handshake.
 - This ensures that TCP is reliable but also as efficient as possible.
 
@@ -100,14 +100,14 @@ What is the TCP protocol and what services does it provide?
 
 Higher Level / More abstract:
 
-Transmission Control Protocol is a protocol that operates within the Transport Later. It provides multiplexing, or end-to-end communication between multiple processes over the single channel provided by IP, via port numbers. It also has features that ensure reliability. It uses a three-way handshake to establish dedicated communication connections and this ensures data integrity, de-duplication, in-order delivery, and retransmission of lost data. The complexity of this process can cause significant latency overhead. To mitigate this and to be as efficient as possible, TCP provides flow control and congestion avoidance.
+Transmission Control Protocol is a protocol that operates within the Transport Later. It provides multiplexing, or end-to-end communication between multiple processes over the single channel provided by IP, via port numbers. It also has features that ensure reliability. It uses a three-way handshake to establish dedicated communication connections and this ensures data integrity, de-duplication, in-order delivery, and retransmission of lost data. However, the complexity of this process can cause significant latency overhead. To mitigate this and to be as efficient as possible, TCP provides flow control and congestion avoidance.
 
 ### TCP Handshake
 
 What are the steps for the three-way handshake? What is its purpose?
 
 - The TCP handshake is used for _establishing dedicated and reliable connections_ between processes over the network.
-- First the sender sends a `SYN` segment, which ostensibly asks if the receiver is ready to receive.
+- First the sender sends a `SYN` segment, which asks if the receiver is ready to receive.
 - Upon receipt of the `SYN` segment, the receiver sends back a `SYN ACK` segment, indicating that it received the previous message and ensuring its messages are also being received.
 - Finally, upon receiving the `SYN ACK`, the original sender sends an `ACK` segment, indicating it is also receiving messages from the receiver, and the connection can be (and subsequently is) established.
 - This not only ensures a reliable connection between both devices, but synchronizes sequence numbers that will be used during the connection.
@@ -153,8 +153,8 @@ What is UDP?
 - It is a very simple and _connectionless_ protocol.
 - Like TCP, it enables multiplexing through source and destination port numbers.
 - Unlike TCP, it does not provide reliability features beyond optional error detection via a checksum.
-- It makes up for this lack of reliability with its speed and flexibility.
-- Specifically, UDP provides speed because it doesn't take the time to establish a dedicated connection, its lack of in-order delivery means no latency due to Head-of-Line blocking, and the one way data flow of a connectionless system cuts down on latency due to extra round trips (there are no acknowledgments).
+- Although UDP lacks reliability, it shines with its speed and flexibility.
+- Specifically, UDP provides speed because it doesn't take the time to establish a dedicated connection, its lack of in-order delivery means no latency due to Head-of-Line blocking, and the one way data flow of a connectionless system cuts down on latency due to decreasing extra round trips (there are no acknowledgments).
 - Furthermore, UDP acts as a base that programmers can build upon. The specifics of what type of reliability functions to include are left up to the developer to implement at the Application level.
 
 ### UDP PDU
