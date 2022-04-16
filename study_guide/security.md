@@ -56,7 +56,7 @@ What is the TLS protocol, and what is its purpose?
 - TLS stands for **Transport Layer Security**, and it is a protocol that utilizes cryptography to provide more secure communications between networked applications.
 - It is what provides the security aspect of HTTPS, enabling measures of _encryption_, _authentication_, and _integrity_ over the inherently insecure protocol of HTTP.
 - It consists of both the TLS _record_ and TLS _handshake_.
-- TLS operates between HTTP and TCP. 
+- TLS operates between HTTP and TCP (exists between protocols of the Application layer and Transport layer)
 
 Why do we need TLS?
 
@@ -110,22 +110,20 @@ Trade offs:
 
 #### Symmetric Key Encryption
 
-What is symmetric key encryption>? What are it's advantages and disadvantages?
+What is symmetric key encryption? What are it's advantages and disadvantages?
 
 - Symmetric key encryption is an encrypted communication system in which both the sender and receiver posses a shared encryption key.
 - The advantages to this are that it facilitates two-way communication. Both parties can use the shared key to encode, send, and decode messages to and from the other.
-- This disadvantage is that a symmetric system relies on the fact that no one else has access to the key in order for it to remain secure.
-- This means that it requires a secure way for both paries to exchange keys before symmetric encryption can be established, and this is difficult to do on the web.
-- For this reason, it is used in _conjunction_ with asymmetric key encryption, which facilitates a secure exchange of a shared key
+- This disadvantage is that a symmetric system relies on the fact that no one else has access to the key in order for it to remain secure. This means that it requires a secure way for both paries to exchange keys before symmetric encryption can be established, and this is difficult to do on the web. For this reason, it is used in _conjunction_ with asymmetric key encryption, which facilitates a secure exchange of a shared key
 
 #### Asymmetric Key Encryption
 
 What is asymmetric key encryption? What are its advantages and disadvantages?
 
-- Asymmetric Key Encryption is an encrypted communications system which uses two distinct keys: a public key and a private key.
+- Asymmetric Key Encryption is an encrypted communications system which uses two distinct keys: a public key and a private key. 
 - The public key is used to encrypt and send a secure message to the recipient, who holds the private key, which is used to decode the encrypted message.
-- This only facilitates one way communication, in which only the party who holds the private key can receive and decode secure communications.
-- However, because it works only one way, we can se asymmetric key encryption as a means for hosts to exchange symmetric encryption keys during the TLS handshake process.
+- This only facilitates one way communication, in which only the party who holds the private key can receive and decode secure communications. However, because it works only one way, we can se asymmetric key encryption as a means for hosts to exchange symmetric encryption keys during the TLS handshake process.
+- Advantage: security, Disadvantage: one way communication
 
 #### Cipher Suites
 
@@ -161,8 +159,8 @@ What are Certificate Authorities and the Chain of Trust?
 
 How does TLS Integrity work?
 
-- TLS integrity makes sure that a message hasn't been altered, tampered with, or faked during transit.
-- Data that is being exchanged with HTTP is encapsulated within the TLS record.
+- TLS integrity makes sure that a message hasn't been altered, tampered with, or faked during transit. This is done via Message Authentication Code (MAC)
+- Data that is being exchanged with HTTP is encapsulated into a PDU within the TLS record.
 - Metadata such as the Message Authentication Code (MAC) allows us the check to see if the message has been interfered with.
 - The sender creates a digest of the data payload with a hashing algorithm (pre-agreed upon in the TLS handshake)
 - This data is then encrypted with the symmetric key and sent to the receiver
