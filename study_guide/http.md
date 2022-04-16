@@ -15,7 +15,7 @@
 What is HTTP? What is it's purpose? What does it consist of?
 
 - HTTP stands for **Hypertext Transfer Protocol**
-- It is the protocol that governs how applications structure messages syntactically between each other in the Application Layer of networked communications.
+- It is the protocol that controls how applications structure messages syntactically between each other in the Application Layer of networked communications.
 - It determines how requests for resources on the web are made, as well as how those requests should be responded to.
 - It provides uniformity to the way resources are transferred. In other words, it is an agreed-upon format on how to communicate.
 - HTTP is based on the _client-server_ paradigm, in which a client (usually some kind of browser) makes a _request_ through the network for a particular web resource stored on a server.
@@ -116,7 +116,7 @@ What are the differences when using a web browser versus using an HTTP tool?
 
 - When using an HTTP tool, a new request for redirected resources (i.e. a `302` response) will not be issued automatically, as it is with a browser
 - A browser will automatically request all referenced resources (i.e. dependencies) in the raw data of a response, and an HTTP tool will not
-- A browser will render the row response data in a user friendly way, and an HTTP tool will not
+- A browser will render the raw response data in a user friendly way, and an HTTP tool will not
 
 ## The HTTP request response cycle
 
@@ -164,7 +164,7 @@ What are mechanisms that we can use to simulate state?
 
 - **AJAX** or Asynchronous JavaScript and XML enables browsers to issue requests and process responses without have to refresh and reload the current webpage
   - Modern web pages tend to be fairly complex, including dynamically generated content as well as many resource dependencies.
-  - Therefore, it behoves us to have a means of responding to both server data and user actions without having to refresh and reload the whole page.
-  - AJAX enabled this functionality, allowing the client to send and retrieve information in small pieces that can be used to update the state of an application without refreshing/reloading, making it much easier to maintain state.
+  - Therefore, it is beneficial to have a way to respond to both server data and user actions without having to refresh and reload the whole page.
+  - AJAX enabled this functionality, allowing the client to send and retrieve information in small pieces that can be used to update the state of an application without refreshing/reloading. This makes it much easier to maintain state.
   - AJAX requests are sent like normal HTTP requests, and the server responds to them with a normal HTTP response.
   - Instead of the browser refreshing to process the HTTP response, it will process the response with a _callback function_, which can update the state of the web app.
