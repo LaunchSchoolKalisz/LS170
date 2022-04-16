@@ -18,11 +18,11 @@
 
 ## Security in HTTP
 
-- HTTP is a text based protocol, and all it's requests and responses consist of plain text.
+- HTTP is a text based protocol. All of its requests and responses consist of plain text.
 - As such, it is _inherently insecure_.
 - Attackers can employ techniques like _packet sniffing_ and _session hijacking_ to obtain information and perform malignant acts.
 - Requests/responses often contain information about the `session id` which uniquely identifies a user to the server, and anyone who gets access to this can pose as the user to get logged in without needing to authenticate with a username and password.
-- Using HTTPS, which utilizes TLS to ensure a secure connection helps with this.
+- We can add security when using HTTP by ysing HTTPS, which utilizes TLS to ensure a secure connection.
 
 ### Session Hijacking
 
@@ -36,7 +36,7 @@ What is session hijacking? What measures can be taken to prevent this?
 ### Same Origin Policy
 
 - Designing for the **same-origin policy** can help to mitigate the lack of security in HTTP by restricting interactions between resources.
-- This policy only permits interaction between resources of the _same origin_, but restricts interactions between resources of a different origin.
+- This policy only permits interaction between resources of the _same origin_. It restricts interactions between resources of a different origin.
 - Resources of the "same-origin" means they share the same _scheme_, _host_, and _port_.
 - Only those resources that share all three aspects are allows to issue requests unrestrictedly.
 - This prevents attackers from using this mechanism to access session ids or other session information.
@@ -47,7 +47,7 @@ What is session hijacking? What measures can be taken to prevent this?
 - This is when a malicious party uses site input fields to inject HTML or JavaScipt into the site directly.
 - This can be prevented by performing _input sanitation_, such as getting rid of anything that might be problematic such as `<script>` tags.
 - It's also possible to escape certain characters that indicate JavaScript or HTML code.
-- Site's can also choose to only accept a safer form of input, such as Markdown.
+- Sites can also choose to only accept a safer form of input, such as Markdown.
 
 ## TLS
 
@@ -60,7 +60,7 @@ What is the TLS protocol, and what is its purpose?
 
 Why do we need TLS?
 
-- Beach HTTP is a text based protocol, it is inherently insecure.
+- Beacause HTTP is a text based protocol, it is inherently insecure.
 - Any intercepted requests/responses are easy to read.
 - Furthermore, HTTP is a fairly simple protocol, concerned only with basic message structure.
 - It provides no check for whether or not the source of an HTTP response is trustworthy, nor does it provide a means of determining if the messages are being tampered with in transit.
@@ -89,9 +89,9 @@ Purpose of TLS:
 A general overview of the TLS handshake:
 
 - The **TLS Handshake** is a special process that takes place after the TCP Handshake in which the client and the server exchange encryption keys.
-- This exchange allows both parties to communicate via encrypted messages, thus giving a security advantage over the inherently insecure messages of HTTP.
+- This exchange allows both parties to communicate via encrypted messages, providing a security advantage over the inherently insecure messages of HTTP.
 - The encryption key exchange is accomplished via asymmetric key encryption.
-- Once the encryption keys are exchanged in the handshake, communication via symmetric encryptions between the client and the server can commence.
+- Once the encryption keys are exchanged in the handshake, communication via symmetric encryptions between the client and the server can begin.
 - The TLS handshake also provides a means by which the two devices can decide on which TLS version should be used for the connection, as well as which algorithms should be used in the cipher suite.
 
 How the TLS Handshake is implemented:
