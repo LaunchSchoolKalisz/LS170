@@ -112,6 +112,13 @@ What are some common status codes and what do they mean?
   - Indicates a generic server-side error took place while trying to retrieve the requested resource.
   - All 500 level status codes indicate server side errors.
 
+___
+
+* 200 level -> response successful
+* 300 level -> redirect
+* 400 level -> client error
+* 500 level -> server error
+
 ## HTTP Tools
 
 What are the differences when using a web browser versus using an HTTP tool?
