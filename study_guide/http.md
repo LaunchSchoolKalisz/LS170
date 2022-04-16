@@ -9,6 +9,7 @@
 - [What is the HTTP request/response cycle?](#the-http-request-response-cycle)
 - [What is meant by 'state' in the context of the web?](#state)
   - [How do we simulate statefulness?](#simulating-state)
+- [HTTP Security](../study_guide/security.md/#security-in-http)
 
 ## What is HTTP?
 
@@ -56,6 +57,7 @@ What does it consist of?
 
 What are `GET` and `POST` requests? What are their use cases?
 
+- A request method is part of the _request line_ of an HTTP request and it describes the type of request that is being made
 - A `GET` request is used to _retrieve_ some resource from the server.
 - A `POST` request is used whenever you want to _send_ something to the server, either to transmit data or to initiate some kind of server side action.
 - Without `POST` requests, we are limited to sending data to the server via query strings
