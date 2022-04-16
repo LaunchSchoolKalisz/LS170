@@ -8,7 +8,7 @@
 ## What is a URL?
 
 - A URL is a **Uniform Resource Locator**
-- It is a consistently formatted string that allows us to _locate_ a certain resource on [the web](../study_guide/the_internet.md#what-is-the-web?).
+- It is a consistently formatted string that allows us to _locate_ a certain resource on [the web](../study_guide/internet.md#what-is-the-web?).
 - It consists of a _scheme_, _host_, _path_, _port number_, and any _query strings_ that we wish to include as parameters.
 - It provides us with a systematic means of locating resources that we are requesting (via an HTTP request).
 
@@ -60,5 +60,5 @@ What is URL encoding, and why is it necessary?
   - characters that are not members of the original ASCII set assigned to URLs
   - characters that are "reserved" because they have special meaning in a URL (such a `?` which indicates the beginning of the query string or `&` which separates query parameters)
   - characters that are considered "unsafe" because they can be misinterpreted (i.e. `%` or ` `)
-- URL encoding works by replacing the character in question with a `5` + two hexadecimal digits (i.e. the character's ASCII code).
+- URL encoding works by replacing the character in question with a `%` + two hexadecimal digits (i.e. the character's ASCII code).
 - We need a safe way to represent these characters in a URL because using them literally can "break" the URL, in that it will no longer be able to locate the resource in question.
