@@ -4,6 +4,7 @@
 - [What is a URI and how does it relate to a URL?](#uris)
 - [What are the components of a URL?](#what-are-the-components-of-a-url)
 - [What is URL Encoding?](#url-encoding)
+- [Construct a Valid URL](#construct-a-valid-url)
 
 ## What is a URL?
 
@@ -50,6 +51,34 @@ Example URL: `https://launchschool.com/staff/assessments/completed?course=RB109&
   - Query strings are limited in use in that they have a maximum length, and are not suitable for sensitive information as they are plainly visible in the URL.
   - Query strings are mostly used with HTTP `GET` requests
 
+Example URL: `https://app.coderpad.io:1234/KAFWN7FJ?hello=world&coder=pad`
+
+* The *scheme* indicates which protocol should be used to access the particular resource
+  * `https`
+  * Scheme is different from protocol
+  * It indicates which protocol group should be used, but not the specific version
+  * Schemes and protocols can be distinguished by case -> schemes are lowercase and protocols are uppercase (`https` vs HTTPS)
+* The *host* indicates where the resource in question is located (or hosted).
+  * This is written in the format of a *domain*
+  * `app.coderpad.io`
+  * DNS takes this human readable domain and finds the equivalent IP so the request can be routed
+* The *port* is an identifier for the specific process
+  * `1234`
+  * It is optional
+  * If no port is specified, the default of the scheme will be used
+* The *path* indicates exactly what specific resource is being requested from the host (if one).
+  * Optional if the URL is locating some homepage
+  * `/KAFWN7FJ`
+  * This tells us we want to access the specific Coderpad running at the location `/KAFWN7FJ`
+  * Historically, this has indicated specifically where the resource was located on the server, but with the proliferation of dynamically generated content, this no longer always follows the absolute file path of the server
+* The *query string* passes additional information to the server
+  * `?hello=world&coder=pad`
+  * It is made up of query parameters, which are name/value pairs that are separated with the `=` sign
+  * If there are multiple query parameters, they can be combined with the `&`
+  * The beginning of a query string is denoted by `?`
+  * Limited in use in that they have a maximum length, and are not suitable for sensitive information (as they are plainly visible in the URL.
+
+
 ## URL Encoding
 
 What is URL encoding, and why is it necessary?
@@ -62,3 +91,12 @@ What is URL encoding, and why is it necessary?
   - characters that are considered "unsafe" because they can be misinterpreted (i.e. `%` or ` `)
 - URL encoding works by replacing the character in question with a `%` + two hexadecimal digits (i.e. the character's ASCII code).
 - We need a safe way to represent these characters in a URL because using them literally can "break" the URL, in that it will no longer be able to locate the resource in question.
+
+## Construct a valid URL
+Request a resource using HTTP from the domain marts.com that is called 'my_resource.md' and limit the responses to those that contain only notes items.
+
+http://www.marts.com/my_resource.md?item_category=notes
+
+Request a resource using HTTP from the localhost with port number 88. The resource is called hello.md.
+
+http://localhost:88/my_folder/hello.md
