@@ -61,17 +61,23 @@ OTHER THINGS TO CONSIDER:
   - This is useful for establishing specific rules of communication (i.e. message acknowledgement and in order delivery of TCP)
 - A connectionless system relies on a single socket for all communication, does not establish dedicated communication channels, and responds to all communications individually as they arrive.
   - It does not matter from what process transmissions come, a single socket listens to all messages regardless and responds to each as it arrives.
-  - This is useful because it is a) a simpler and more flexible process than a connection-oriented system and b) it reduces latency overhead because a connection does not have to be established.
+  - This is useful because it is a) a simpler and more flexible process than a connection-oriented system and b) it reduces latency overhead because a connection does not have to be established. 
+  
+### How are connections in a connection-oriented system recognized?
+* Via a four-tuple:
+  * IP and port of sender
+  * IP and port of receiver
 
 ### What is Network Reliability?
 
 - Network Reliability ensures that a reliable communication channel is established between processes.
 - That is, that all transmitted data is received at communication end-point in the correct order.
 - Consists of 4 key elements:
-  - In-order delivery
-  - Error detection
-  - Handling data loss (ensures missing data is retransmitted)
-  - Handing duplication (ensures duplicate data is eliminated)
+  - In-order delivery (sequence numbers)
+  - Error detection (checksum)
+  - Handling data loss (ensures missing data is retransmitted -> ACK)
+  - Handing duplication (ensures duplicate data is eliminated via sequence numbers)
+  - data integrity, de-duplication, in-order delivery, and retransmission of lost data
 - Network reliability is implemented by TCP in the Transport Layer.
 - Lower level protocols are inherently unreliable, because they drop corrupted data with no protocols for replacement or retrieval.
 
@@ -145,6 +151,8 @@ What is congestion avoidance?
 - TCP will take this as a sign to reduce the size of the transmission window, that is, it will send less data along the given channel.
 - This is to make data transmission as efficient as possible to mitigate the latency overhead inherent in TCP connections.
 
+Latency overhead: Any latency that is added to the existing latency caused by limitations of the physical realm
+
 ## UDP
 
 What is UDP?
@@ -178,4 +186,4 @@ What are the advantages and disadvantages of UDP?
 What are some use cases for UDP over TCP?
 
 - UDP is a good option for any application that prioritizes speed and flexibility.
-- For example, video calling applications and online games that prioritize speed over the potential for small amounts of lost data, can utilize UDP.
+- For example, video calling applications and online games, first person shooter games that prioritize speed over the potential for small amounts of lost data, can utilize UDP.
