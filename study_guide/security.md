@@ -22,7 +22,7 @@
 - As such, it is _inherently insecure_.
 - Attackers can employ techniques like _packet sniffing_ and _session hijacking_ to obtain information and perform malignant acts.
 - Requests/responses often contain information about the `session id` which uniquely identifies a user to the server, and anyone who gets access to this can pose as the user to get logged in without needing to authenticate with a username and password.
-- We can add security when using HTTP by ysing HTTPS, which utilizes TLS to ensure a secure connection.
+- We can add security when using HTTP by using HTTPS, which utilizes TLS to ensure a secure connection.
 
 ### Session Hijacking
 
