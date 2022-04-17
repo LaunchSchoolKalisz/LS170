@@ -24,6 +24,9 @@ What is HTTP? What is it's purpose? What does it consist of?
   - The server's response provides the client with the requested resource, informs the client that the action requested has been carried out, or else informs the client that an error occured in the process.
 - HTTP governs the syntax of these messages, which together consist of the request/response cycle.
 - HTTP is a _text-based_ protocol. All requests and responses are made in plain text, which makes it inherently insecure.
+- Distinguishes the client from the server
+  - Request -> client
+  - Response -> server  
 
 ## HTTP Requests
 
