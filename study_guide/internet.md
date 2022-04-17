@@ -6,6 +6,9 @@
 - [What is a resource?](#what-is-a-resource)
 - [What is the client-server model?](#what-is-the-client-server-model)
   - [Server-side Infrastructure](#server-side-infrastructure)
+- [PDU](#pdus)
+- [Internet Function](#internet-function)
+
 
 ## What is the Internet?
 
@@ -13,7 +16,7 @@ The internet is a "network of networks". A network is any number of devices that
 
 ## How does the Internet work?
 
-The Internet can be thought of as a series of different "layers" operating on top of one another: from the physical infrastructure on the lowest level to the protocols that control message syntax at the highest level. All of these layers working together facilitate _networked communication_. Each layer is governed by some sort of _protocol_, or system of rules, that allows it to perform a service to encapsulated data from the layer above.
+The Internet can be thought of as a series of different "layers" operating on top of one another: from the physical infrastructure on the lowest level to the protocols that control message syntax at the highest level. All of these layers working together facilitate _networked communication_. Each layer is governed by some sort of _protocol_, or system of rules, that allows it to perform a service to encapsulated data from the layer above. In other words, a PDU of a protocol at a higher layer is *encapsulated* in a PDU of a protocol at the current layer.
 
 When a user types a URL into an address bar, such as `www.google.com`, this triggers the _client_ (usually the browser) to send an HTTP request for the resource indicated by the address. HTTP is the protocol functioning at the highest layer, the _Application Layer_, and it controls the structure of messages exchanged between networked applications. It packages data into a PDU (protocol data unit) known as a Request or a Response. A Request is sent to a certain server to request a particular resource from the web. This might be a webpage, an image, or video file.
 
@@ -36,6 +39,11 @@ Finally, that Ethernet Frame is handed to the Physical Layer, the lowest layer i
 Once our data is transported to it's destination, a `google.com` server, each layer of networked communication is "unwrapped" in turn so that the original message, the data within the HTTP request, can be processed. When the server receives this, it issues an HTTP response back to the client, which undergoes the same encapsulation and travel process the request did to get from the issuing server back to your browser. If the response is successful, it will include the requested resource in its _body_, which can be rendered in a user friendly way by the browser. If it is unsuccessful, it will respond with some kind of error code, such as 404, which indicates the resource in question was not found, or 500, which indicates a generic server-side error.
 
 This response gets encapsulated into each layer in turn, in order to return to the user. The response will be folded into a TCP segment so that the correct process on your computer can be reached, then an IP packet so the correct network address can be reached, an Ethernet Frame so the correct device can be recognized, and finally down into the binary streams of data being transported across the physical medium of the network. Once it's received by your browser, the browser can process the response and display the website for you! Then, the next user action, clicking a link, opening your e-mail, streaming a game or video starts the whole process all over again.
+
+Encapsulation enables protocols at different layers to work together by providing separation and creating a certain level of abstraction — the protocol at the current layer can provide a 'service' for the protocol at the higher layer, without concerning about any protocol-specific information of the higher-layer protocol.
+This is particularly pertinent when there are many different protocols used at one network layer (e.g., protocols at the Application layer include HTTP, SMTP, FTP, and more; a protocol at the Transport layer does not need to know about which protocol it services).
+
+One of the functions in categorizing protocol groups into separate layers is the ability to encapsulate data. Ostensibly, what we are doing is hiding data away within layers, by encapsulating it within a data unit of the layer below. A layer is mostly concerned with it's _header_, that is, the meta-data attached to it's data payload that tells it what to do. It doesn't really matter what the data payload _is_ as long as the header information is complete and the layer can perform its intended function. This means that a protocol at one layer doesn't need to know anything at all about how protocols in other layers are implemented in order for them to interact.
 
 ## What is the web?
 
@@ -65,3 +73,31 @@ What is the role of a resource in the general scheme of networked communication?
 - **Web server** = responds to requests for static resources, i.e. resources that do not require data processing (like CSS files)
 - **Application server** = handling more complicated requests, such as those that contain application or business logic. Any server-side application code lives here.
 - **Data store** = some kind of storage construct that can save data for later retrieval and processing.
+
+## PDUs
+### What is a Protocol Data Unit (PDU)? What is its purpose in the context of network communication?
+
+* Protocol Data Unit
+* a block of data that gets transported over the network by the current "governing" protocol
+* The unit itself depends on the layer in which we are currently functioning
+* A PDU consists of a _header_ which contains meta-data specific to the current protocol's responsibility / service
+* A PDU has a _data payload_ which contains the entire PDU from the layer above the current layer
+* It facilitates encapsulation of data, allowing each protocol to operate a modularized process, and perform the service that it is allocated in conjunction with the other protocols that make up the network.
+
+**Caution!** higher-level vs higher layer are two different concepts
+
+### How do the different parts of a PDU interact?
+
+* PDU consists of a header, data payload, and an optional footer.
+* Header contains metadata concerning the current protocol, and this metadata facilitates the service the protcol is performing for the data payload.
+* Data payload contains the data that the current protocol wants to transport. Specifically, the payload is the PDU of a higher layer.
+
+## Internet Function
+What is the primary function of the Internet / Network Layer? What Protocols govern this function?
+
+* This layer is concerned with communication between devices on different networks (i.e., inter-network communication).
+* It comes between protocols at the Link/Data Link layer and protocols at the Transport layer.
+* The primary protocol that governs this function is the Internet Protocol (IP).
+
+* IP provides routing capabilities between devices on different networks via IP addresses.
+* It also encapsulates data in packets.
