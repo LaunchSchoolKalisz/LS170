@@ -748,3 +748,12 @@ ___
 * **Datagram Transport Layer Security**
 * A separate protocol _based on_ TLS that is used with network connections that utilize UDP instead of TCP
 * Because TLS is interlinked with TCP and the TCP handshake, separate protocols are needed to meet the security requirements of UDP
+
+### Construct a valid URL
+Request a resource using HTTP from the domain marts.com that is called 'my_resource.md' and limit the responses to those that contain only notes items.
+
+http://www.marts.com/my_resource.md?item_category=notes
+
+Request a resource using HTTP from the localhost with port number 88. The resource is called hello.md.
+
+http://localhost:88/my_folder/hello.md
